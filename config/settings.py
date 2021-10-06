@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import environ
+# import os
 
 env = environ.Env()
 # reading .env file
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     'custom_user_app',
     'meal_plan_app',
     'recipe_app',
-    'shopping_list_app',
+    'shopping_list_app'
 ]
 
 MIDDLEWARE = [
@@ -128,7 +129,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Default route for user login
+
+LOGIN_URL = '/login/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = "custom_user_app.CustomUser"
+
+# specifies the path of the media directory
+# MEDIA_ROOT= os.path.join(BASE_DIR, 'media/')
+# MEDIA_URL= "/media/"
