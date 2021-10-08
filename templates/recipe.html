@@ -1,0 +1,34 @@
+<h1>{{recipe.title}}</h1>
+{% if request.user in recipe.favorited_by.all %}
+
+<a href="/recipe_app/removeFavorite/{{recipe.id}}/">Remove from Favorite</a>
+{% else %}
+<a href="/recipe_app/favorite/{{recipe.id}}/">Add to Favorite</a>
+
+{% endif %}
+<p>Created by: {{recipe.created_by}}</p>
+<h2>Description</h2>
+<p>{{recipe.recipe_description|truncatechars:'100'}}</p>
+<p>Cook time: {{recipe.cook_time}}</p>
+{% if recipe.recipe_image %}
+<img
+  style="width: 100px"
+  src="{{recipe.recipe_image}}"
+  alt="{{recipe.title}}"
+/>
+{% endif %}
+<h2>Instructions</h2>
+<pre>{{recipe.instruction}}</pre>
+<p>Created at: {{recipe.created_at}}</p>
+<h2>Reviews</h2>
+{% if reviews %} {% for review in reviews %}
+
+<h3>{{review.created_by}}</h3>
+<p>{{review.rating}}/5</p>
+<p>{{review.body}}</p>
+<p>{{review.created_at}}</p>
+
+<p>{% endfor %} {% else %}</p>
+
+<p>This recipe does not have any reviews yet.</p>
+{% endif %}
