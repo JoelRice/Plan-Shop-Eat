@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'custom_user_app',
     'meal_plan_app',
     'recipe_app',
-    'shopping_list_app'
+    'shopping_list_app',
+    'authentication'
 ]
 
 MIDDLEWARE = [
