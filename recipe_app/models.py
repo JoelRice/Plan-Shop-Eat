@@ -50,6 +50,7 @@ class Recipe(models.Model):
         related_name='recipe_tool'
         )
     recipe_image = models.URLField(blank=True, null=True)
+    recipe_description = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.title

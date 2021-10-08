@@ -1,0 +1,21 @@
+<h1>Recipes</h1>
+
+{% for recipe in recipes %}
+<h2><a href="/recipe_app/recipe/{{recipe.id}}/">{{recipe.title}}</a></h2>
+{% if request.user in recipe.favorited_by.all %}
+
+<a href="/recipe_app/removeFavorite/{{recipe.id}}/">Remove from Favorite</a>
+{% else %}
+<a href="/recipe_app/favorite/{{recipe.id}}/">Add to Favorite</a>
+
+{% endif %}
+<p>{{recipe.recipe_description}}</p>
+{% if recipe.recipe_image %}
+<img
+  style="width: 100px"
+  src="{{recipe.recipe_image}}"
+  alt="{{recipe.title}}"
+/>
+{% endif %}
+<p>{{recipe.created_by}}</p>
+{% endfor %}
