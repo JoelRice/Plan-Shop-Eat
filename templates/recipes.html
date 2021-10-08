@@ -9,7 +9,7 @@
 <a href="/recipe_app/favorite/{{recipe.id}}/">Add to Favorite</a>
 
 {% endif %}
-<p>{{recipe.recipe_description}}</p>
+<p>{{recipe.recipe_description|truncatechars:100}}</p>
 {% if recipe.recipe_image %}
 <img
   style="width: 100px"
