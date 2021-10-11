@@ -1,0 +1,8 @@
+<h1>Welcome, {{user_profile.username}}!</h1>
+<div>
+  <h2>{{user_profile.username}}'s Favorite Recpies</h2>
+  {% for favorite in user_favortied_recipes %}
+  <h4>{{favorite}}</h4>
+  {% endfor %}
+</div>
+<!-- These will be links to recipes next, they are just the rendered names for now -->
