@@ -1,11 +1,9 @@
 from django.urls import path, include
 
-from . import views
-from meal_plan_app import views
-from django.conf.urls import include, url
+from meal_plan_app.views import meal_plan_view, plan_list_view
 
 
 urlpatterns = [
-    path('<int:id>', views.meal_plan_view, name='meal_plan_index'),
-    path('plan/', views.plans_view, name='plan'),
+    path('meal_plan/<int:id>/', meal_plan_view, name='meal_plan_view'),
+    path('plans/', plan_list_view, name='plans'),
 ]
