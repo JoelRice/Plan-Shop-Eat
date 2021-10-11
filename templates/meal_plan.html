@@ -1,0 +1,46 @@
+<h1>Menu Plan</h1>
+<h2>Plan Title: {{ meal.plan_title }}</h2>
+<p>Created at : {{meal.created_at }}</p>
+<p>Created by: {{meal.created_by}}</p>
+<h3>Monday:</h3>
+<ul>
+{%for recipe in meal.monday.all%}
+<p>{{recipe}}</p>
+{%endfor%}
+</ul>
+<h3>Tuesday</h3>
+<ul>
+{%for recipe in meal.tuesday.all%}
+<p>{{recipe}}</p>
+{%endfor%}
+</ul>
+<h3>Wednesday</h3>
+<ul>
+{%for recipe in meal.wednesday.all%}
+<p>{{recipe}}</p>
+{%endfor%}
+</ul>
+<h3>Thursday</h3>
+<ul>
+{%for recipe in meal.thursday.all%}
+<p>{{recipe}}</p>
+{%endfor%}
+</ul>
+<h3>Friday</h3>
+<ul>
+{%for recipe in meal.friday.all%}
+<p>{{recipe}}</p>
+{%endfor%}
+</ul>
+<h3>Saturday</h3>
+<ul>
+{%for recipe in meal.saturday.all%}
+<p>{{recipe}}</p>
+{%endfor%}
+</ul>
+<h3>Sunday</h3>
+<ul>
+{%for recipe in meal.sunday.all%}
+<p>{{recipe}}</p>
+{%endfor%}
+</ul>
