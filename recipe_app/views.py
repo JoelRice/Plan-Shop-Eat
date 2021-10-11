@@ -1,8 +1,12 @@
-from django.shortcuts import HttpResponseRedirect, render, reverse
+from django.core.exceptions import ValidationError
+from django.shortcuts import HttpResponseRedirect, redirect, render, reverse
 from django.contrib.auth.decorators import login_required
+from django.views import View
+from recipe_app.forms import IngredientForm, ToolForm
 
 
-from recipe_app.models import Recipe
+
+from recipe_app.models import Ingredient, Recipe, Tool
 
 # Create your views here.
 
@@ -50,4 +54,72 @@ def recipe_view(request, id):
             'recipe': recipe,
             'reviews': reviews
             }
+        )
+
+
+class CreateToolView(View):
+    template_name = 'generic_form.html'
+    form = ToolForm()
+
+    def get(self, request):
+        return render(
+            request,
+            self.template_name,
+            {'form': self.form}
+        )
+
+    def post(self, request):
+        form = ToolForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            if Tool.objects.filter(name=data.get('name')).exists():
+                return render(
+                    request,
+                    self.template_name,
+                    {
+                        'form': self.form,
+                        'error': f"{data.get('name')} already exists in the database."
+                        }
+                )
+            tool = Tool.objects.create(name=data.get('name'))
+            return HttpResponseRedirect(
+                request.META.get('HTTP_REFERER'),
+                reverse('recipes')
+                )
+        return render(
+            request,
+            self.template_name,
+            {'form': self.form}
+        )
+
+
+class CreateIngredientView(View):
+    template_name = 'generic_form.html'
+    form = IngredientForm()
+
+    def get(self, request):
+        return render(
+            request,
+            self.template_name,
+            {'form': self.form}
+        )
+
+    def post(self, request):
+        form = IngredientForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            tool = Ingredient.objects.create(
+                name=data.get('name'),
+                unit=data.get('unit'),
+                amount=data.get('amount'),
+                is_spice=data.get('is_spice')
+                )
+            return HttpResponseRedirect(
+                request.META.get('HTTP_REFERER'),
+                reverse('recipes')
+                )
+        return render(
+            request,
+            self.template_name,
+            {'form': self.form}
         )
