@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>{% block title %}Plan. Shop. Eat.{% endblock %}</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="navbar">
-        {% block navbar %}
-        <a href="/recipe_app/recipes">Recipes</a> |
-        <a href="/meal_plan_app/plans">Meal Plans</a> |
-        <a href="/shopping_list_app/">Shopping Lists</a> |
-        <a href="/custom_user_app/">User Profile</a>
-        
-        {% endblock %}
+      {% block navbar %}
+      <a href="/recipe_app/recipes">Recipes</a> |
+      <a href="/meal_plan_app/plans">Meal Plans</a> |
+      <a href="/shopping_list_app/">Shopping Lists</a> |
+      <a href="/custom_user_app/profile/{{user.id}}/">User Profile</a>
+
+      {% endblock %}
     </div>
 
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
-</body>
+    <div id="content">{% block content %}{% endblock %}</div>
+  </body>
 </html>
