@@ -21,6 +21,7 @@
 <pre>{{recipe.instruction}}</pre>
 <p>Created at: {{recipe.created_at}}</p>
 <h2>Reviews</h2>
+<a href="/recipe_app/createReview/{{recipe.id}}/"">Add Review</a>
 {% if reviews %} {% for review in reviews %}
 
 <h3>{{review.created_by}}</h3>

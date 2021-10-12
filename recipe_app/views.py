@@ -2,11 +2,11 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import HttpResponseRedirect, redirect, render, reverse
 from django.contrib.auth.decorators import login_required
 from django.views import View
-from recipe_app.forms import IngredientForm, ToolForm
+from recipe_app.forms import IngredientForm, ReviewForm, ToolForm
 
 
 
-from recipe_app.models import Ingredient, Recipe, Tool
+from recipe_app.models import Ingredient, Recipe, Review, Tool
 
 # Create your views here.
 
@@ -108,7 +108,7 @@ class CreateIngredientView(View):
         form = IngredientForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
-            tool = Ingredient.objects.create(
+            ingredient = Ingredient.objects.create(
                 name=data.get('name'),
                 unit=data.get('unit'),
                 amount=data.get('amount'),
@@ -117,6 +117,39 @@ class CreateIngredientView(View):
             return HttpResponseRedirect(
                 request.META.get('HTTP_REFERER'),
                 reverse('recipes')
+                )
+        return render(
+            request,
+            self.template_name,
+            {'form': self.form}
+        )
+
+
+class CreateReviewView(View):
+    template_name = 'generic_form.html'
+    form = ReviewForm()
+
+    def get(self, request, id):
+        return render(
+            request,
+            self.template_name,
+            {'form': self.form}
+        )
+
+    def post(self, request, id):
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            recipe = Recipe.objects.get(id=id)
+            user = request.user
+            review = Review.objects.create(
+                recipe = recipe,
+                created_by = user,
+                body = data.get('body'),
+                rating = data.get('rating'),
+            )
+            return HttpResponseRedirect(
+                reverse('recipe', args=(id,))
                 )
         return render(
             request,
