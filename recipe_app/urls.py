@@ -2,6 +2,7 @@ from django.urls import path
 
 from recipe_app.views import (
     CreateIngredientView,
+    CreateReviewView,
     CreateToolView,
     logged_in_view,
     add_favorite_view,
@@ -16,4 +17,5 @@ urlpatterns = [
     path("removeFavorite/<int:id>/", remove_favorite_view, name="remove_favorite"),
     path('createTool/', CreateToolView.as_view(), name='create_tool'),
     path('createIngredient/', CreateIngredientView.as_view(), name='create_ingredient'),
+    path('createReview/<int:id>/', CreateReviewView.as_view(), name='create_review'),
 ]
