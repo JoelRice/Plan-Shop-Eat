@@ -1,8 +1,7 @@
 <h1>Welcome, {{user_profile.username}}!</h1>
+<h2>{{user_profile.username}}'s Favorite Recpies</h2>
 <div>
-  <h2>{{user_profile.username}}'s Favorite Recpies</h2>
   {% for favorite in user_favortied_recipes %}
-  <h4>{{favorite}}</h4>
+  <h4><a href="/recipe_app/recipe/{{favorite.id}}/">{{favorite}}</a></h4>
   {% endfor %}
 </div>
-<!-- These will be links to recipes next, they are just the rendered names for now -->
