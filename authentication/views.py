@@ -4,6 +4,7 @@ from django.contrib.auth import login, authenticate, logout
 from custom_user_app.models import CustomUser
 # Create your views here.
 
+# change Http redirect!!!
 def login_view(request):
     if request.method == "POST":
         form = LoginForm(request.POST)
@@ -13,7 +14,7 @@ def login_view(request):
                 "username"), password=data.get("password"))
             if user:
                 login(request, user)
-                return HttpResponseRedirect(reverse("homepage"))
+                return HttpResponseRedirect(reverse("recipes"))
     form = LoginForm()
     return render(request, "generic_form.html", {"form": form})
 
