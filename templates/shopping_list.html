@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <h2>{{user.displayname}}'s Shopping List</h2>
+    <div>
+        <h3>Tools</h3>
+        {% for tool in tools %}
+            <button>
+                {{tool.name}}
+            </button>
+        {% endfor %}
+    </div>    
+    <div>
+        <h3>Ingredients</h3>
+        {% for ingredient in ingredients %}
+            <button>
+                {{ingredient.name}}
+            </button>
+        {% endfor %}
+    </div>    
+</div>
+{% endblock content%}
