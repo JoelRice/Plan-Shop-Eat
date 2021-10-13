@@ -11,7 +11,7 @@ class Ingredient(models.Model):
     is_spice = models.BooleanField()
 
     def __str__(self):
-        return self.name
+        return f"{self.amount} {self.unit} - {self.name}"
 
 
 class Tool(models.Model):
