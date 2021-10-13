@@ -9,7 +9,8 @@ from recipe_app.forms import IngredientForm, ReviewForm, ToolForm
 from recipe_app.models import Ingredient, Recipe, Review, Tool
 
 # Create your views here.
-
+def index_view(request):
+    return render(request, 'index.html')
 
 @login_required
 def logged_in_view(request):
