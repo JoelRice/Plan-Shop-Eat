@@ -1,11 +1,12 @@
 from django.db import models
+from django.utils import timezone
 from recipe_app.models import Tool, Ingredient
 from meal_plan_app.models import MealPlan
 # Create your models here.
 
 class ShoppingList(models.Model):
     tools = models.ManyToManyField(Tool, related_name='shopping_list_tools')
-    ingredient = models.ManyToManyField(
+    ingredients = models.ManyToManyField(
         Ingredient,
         related_name='shopping_list_ingredient'
         )
@@ -14,6 +15,7 @@ class ShoppingList(models.Model):
         on_delete=models.CASCADE,
         related_name='shopping_list_meal_plan'
         )
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.meal_plan
+        return f'{self.created_at}'
