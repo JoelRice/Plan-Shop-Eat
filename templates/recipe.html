@@ -1,9 +1,9 @@
 <h1>{{recipe.title}}</h1>
 {% if request.user in recipe.favorited_by.all %}
 
-<a href="/recipe_app/removeFavorite/{{recipe.id}}/">Remove from Favorite</a>
+<a href="/recipe_app/removeFavorite/{{recipe.id}}/"><button>Remove from Favorite 👎</button></a>
 {% else %}
-<a href="/recipe_app/favorite/{{recipe.id}}/">Add to Favorite</a>
+<a href="/recipe_app/favorite/{{recipe.id}}/"><button>Add to Favorite 👍</button></a>
 
 {% endif %}
 <p>Created by: {{recipe.created_by}}</p>
@@ -29,6 +29,7 @@
 <h2>Instructions</h2>
 <pre>{{recipe.instruction}}</pre>
 <p>Created at: {{recipe.created_at}}</p>
+<hr />
 <h2>Reviews</h2>
 <a href="/recipe_app/createReview/{{recipe.id}}/"">Add Review</a>
 {% if reviews %} {% for review in reviews %}
@@ -37,6 +38,7 @@
 <p>{{review.rating}}/5</p>
 <p>{{review.body}}</p>
 <p>{{review.created_at}}</p>
+<hr />
 
 <p>{% endfor %} {% else %}</p>
 
