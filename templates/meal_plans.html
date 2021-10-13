@@ -3,7 +3,7 @@
 <h1>Meal Plans</h1>
 <div>
   {%for plan in plans %}
-  <button><a href="/meal_plan_app/meal_plan/{{plan.id}}/">{{plan}}</a></button>
+  <a href="/meal_plan_app/meal_plan/{{plan.id}}/"><button>{{plan}}</button></a>
   {%endfor%}
 </div>
 {% endblock %}

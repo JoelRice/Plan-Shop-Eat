@@ -6,49 +6,49 @@
 <div>
   <h3>Monday:</h3>
   {%for recipe in meal.monday.all%}
-  <button><a href="/recipe_app/recipe/{{recipe.id}}/">{{recipe}}</a></button>
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
   {%endfor%}
 </div>
 
 <div>
   <h3>Tuesday:</h3>
   {%for recipe in meal.tuesday.all%}
-  <button><a href="/recipe_app/recipe/{{recipe.id}}/">{{recipe}}</a></button>
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
   {%endfor%}
 </div>
 
 <div>
   <h3>Wednesday:</h3>
   {%for recipe in meal.wednesday.all%}
-  <button><a href="/recipe_app/recipe/{{recipe.id}}/">{{recipe}}</a></button>
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
   {%endfor%}
 </div>
 
 <div>
   <h3>Thursday:</h3>
   {%for recipe in meal.thursday.all%}
-  <button><a href="/recipe_app/recipe/{{recipe.id}}/">{{recipe}}</a></button>
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
   {%endfor%}
 </div>
 
 <div>
   <h3>Friday:</h3>
   {%for recipe in meal.friday.all%}
-  <button><a href="/recipe_app/recipe/{{recipe.id}}/">{{recipe}}</a></button>
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
   {%endfor%}
 </div>
 
 <div>
   <h3>Saturday:</h3>
   {%for recipe in meal.saturday.all%}
-  <button><a href="/recipe_app/recipe/{{recipe.id}}/">{{recipe}}</a></button>
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
   {%endfor%}
 </div>
 
 <div>
   <h3>Sunday:</h3>
   {%for recipe in meal.sunday.all%}
-  <button><a href="/recipe_app/recipe/{{recipe.id}}/">{{recipe}}</a></button>
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
   {%endfor%}
 </div>
 {% endblock %}
