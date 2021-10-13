@@ -2,10 +2,12 @@ from custom_user_app.models import CustomUser
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
-
+# signup
 class CustomUserCreationForm(UserCreationForm):
-    displayname = forms.CharField(max_length=100, label="Display Name", help_text="Max Length is 100 characters")
-
+    displayname = forms.CharField(
+        max_length=100, 
+        label="Display Name", 
+        help_text="Max Length is 100 characters")
 
     class Meta:
         model = CustomUser
@@ -17,3 +19,4 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = ('username', 'displayname')
+        

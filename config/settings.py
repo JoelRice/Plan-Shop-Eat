@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'custom_user_app',
     'meal_plan_app',
     'recipe_app',
-    'shopping_list_app'
+    'shopping_list_app',
+    'authentication'
 ]
 
 MIDDLEWARE = [
@@ -131,7 +132,7 @@ STATIC_URL = '/static/'
 
 # Default route for user login
 
-LOGIN_URL = '/login/'
+LOGIN_URL = '/authentication/login/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field

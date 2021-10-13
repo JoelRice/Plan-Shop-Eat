@@ -1,6 +1,5 @@
 from django.db import models
 from custom_user_app.models import CustomUser
-
 from recipe_app.models import Recipe
 from django.utils import timezone
 
@@ -15,6 +14,7 @@ class MealPlan(models.Model):
     friday = models.ManyToManyField(Recipe, related_name='friday_recipe')
     saturday = models.ManyToManyField(Recipe, related_name='saturday_recipe')
     sunday = models.ManyToManyField(Recipe, related_name='sunday_recipe')
+    plan_title = models.CharField(max_length=50, null=True, blank=True)
     created_at = models.DateTimeField(default=timezone.now)
     created_by = models.ForeignKey(
         CustomUser,
@@ -23,4 +23,6 @@ class MealPlan(models.Model):
         )
 
     def __str__(self):
-        return f'{self.created_by} - {self.created_at}'
+        # I change naming to be more concise.
+        # return f'{self.created_by} - {self.created_at}'
+        return f'{self.plan_title} - {self.created_by}'
