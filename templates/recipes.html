@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h1>Recipes</h1>
 
 {% for recipe in recipes %}
@@ -20,5 +19,4 @@
 />
 {% endif %}
 <p>{{recipe.created_by}}</p>
-{% endfor %}
-{% endblock %}
+{% endfor %} {% endblock %}

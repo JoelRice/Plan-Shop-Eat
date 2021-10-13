@@ -1,6 +1,5 @@
 from django.db import models
 from custom_user_app.models import CustomUser
-
 from recipe_app.models import Recipe
 from django.utils import timezone
 
@@ -24,4 +23,6 @@ class MealPlan(models.Model):
         )
 
     def __str__(self):
-        return f'{self.created_by} - {self.created_at}'
+        # I change naming to be more concise.
+        # return f'{self.created_by} - {self.created_at}'
+        return f'{self.plan_title} - {self.created_by}'

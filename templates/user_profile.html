@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <h1>Welcome, {{user_profile.username}}!</h1>
 <div>
-  <h2>{{user_profile.username}}'s Favorite Recpies</h2>
+  <h2>{{user_profile.username}}'s Favorite Recpies:</h2>
   {% for favorite in user_favortied_recipes %}
   <button>
     <a href="/recipe_app/recipe/{{favorite.id}}/">{{favorite}}</a>
@@ -9,7 +9,7 @@
   {% endfor %}
 </div>
 <div>
-  <h2>{{user_profile.username}}'s Recpies</h2>
+  <h2>{{user_profile.username}}'s Recpies:</h2>
   {% for recipes in users_recipes %}
   <button>
     <a href="/recipe_app/recipe/{{recipes.id}}/">{{recipes.title}}</a>
@@ -18,10 +18,15 @@
 </div>
 
 <div>
-  <h2>{{user_profile.username}}'s Meal Plans</h2>
+  <h2>{{user_profile.username}}'s Meal Plans:</h2>
+  {% for plan in users_meal_plans %}
+  <button>
+    <a href="/meal_plan_app/meal_plan/{{plan.id}}/">{{plan}}</a>
+  </button>
+  {% endfor %}
 </div>
 
 <div>
-  <h2>{{user_profile.username}}'s Shopping lists</h2>
+  <h2>{{user_profile.username}}'s Shopping lists:</h2>
 </div>
 {% endblock %}
