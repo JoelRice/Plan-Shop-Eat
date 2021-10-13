@@ -2,7 +2,7 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import HttpResponseRedirect, redirect, render, reverse
 from django.contrib.auth.decorators import login_required
 from django.views import View
-from recipe_app.forms import IngredientForm, ReviewForm, ToolForm
+from recipe_app.forms import IngredientForm, RecipeForm, ReviewForm, ToolForm
 
 
 
@@ -151,6 +151,44 @@ class CreateReviewView(View):
             )
             return HttpResponseRedirect(
                 reverse('recipe', args=(id,))
+                )
+        return render(
+            request,
+            self.template_name,
+            {'form': self.form}
+        )
+
+
+class CreateRecipeView(View):
+    template_name = 'generic_form.html'
+    form = RecipeForm()
+
+    def get(self, request):
+        return render(
+            request,
+            self.template_name,
+            {'form': self.form}
+        )
+
+    def post(self, request):
+        form = RecipeForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            user = request.user
+            recipe = Recipe.objects.create(
+                created_by = user,
+                title = data.get('title'),
+                instruction = data.get('instruction'),
+                cook_time = data.get('cook_time'),
+                # ingredients = data.get('ingredients'),
+                # tools = data.get('tools'),
+                recipe_image = data.get('recipe_image'),
+                recipe_description = data.get('recipe_description'),
+            )
+            recipe.ingredients.set(data.get('ingredients'))
+            recipe.tools.set(data.get('tools'))
+            return HttpResponseRedirect(
+                reverse('recipe', args=(recipe.id,))
                 )
         return render(
             request,
