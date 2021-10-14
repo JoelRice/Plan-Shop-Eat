@@ -60,6 +60,36 @@ def recipe_view(request, id):
         )
 
 
+@login_required
+def edit_recipe_view(request, id):
+    recipe = Recipe.objects.get(id=id)
+    if request.method == 'POST':
+        form = RecipeForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            recipe.title = data.get('title')
+            recipe.instructions = data.get('instructions')
+            recipe.cook_time = data.get('cook_time')
+            recipe.ingredients = data.get('ingredients')
+            recipe.tools.set(data.get('tools'))
+            recipe.recipe_image = data.get('recipe_image')
+            recipe.recipe_description = data.get('recipe_description')
+            recipe.save()
+            return HttpResponseRedirect(reverse(
+                'recipe', args=[id]))
+    data = {
+        "title": recipe.title,
+        "instructions": recipe.instructions,
+        "cook_time": recipe.cook_time,
+        "ingredients": recipe.ingredients,        
+        "tools": recipe.tools.all(),
+        "recipe_image": recipe.recipe_image,
+        "recipe_description": recipe.recipe_description,  
+    }
+    form = RecipeForm(data)
+    return render(request, 'generic_form.html', {"form": form})
+
+
 class CreateToolView(View):
     template_name = 'generic_form.html'
     form = ToolForm()

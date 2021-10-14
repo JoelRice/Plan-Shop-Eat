@@ -6,7 +6,8 @@ from recipe_app.views import (
     CreateToolView,
     logged_in_view,
     add_favorite_view,
-    recipe_view
+    recipe_view,
+    edit_recipe_view
     )
 from recipe_app.views import remove_favorite_view
 
@@ -18,4 +19,5 @@ urlpatterns = [
     path('createTool/', CreateToolView.as_view(), name='create_tool'),
     path('createReview/<int:id>/', CreateReviewView.as_view(), name='create_review'),
     path('createRecipe/', CreateRecipeView.as_view(), name='create_recipe'),
+    path('edit_recipe/<int:id>/', edit_recipe_view, name="edit_recipe"),
 ]
