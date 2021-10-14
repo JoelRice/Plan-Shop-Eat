@@ -1,6 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
 <h1>Meal Plans</h1>
+
+<div>
+  <a href="/meal_plan_app/create_meal_plan/"
+    ><button>Create New Meal Plan</button></a
+  >
+</div>
+
+<br />
 <div>
   {%for plan in plans %}
   <a href="/meal_plan_app/meal_plan/{{plan.id}}/"><button>{{plan}}</button></a>
