@@ -1,15 +1,10 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div>
-    <h2>Shopping Lists</h2>
-    {% for list in shopping_lists %}
-    <a href='/shopping_list_app/shopping_list/{{list.id}}/'><button>{{list.created_at}}</button></a>
-    {% endfor %}
-</div>
-<div>
-    <h2>Meal Plans</h2>
-    {% for plan in meal_plans %}
-    <a href='/meal_plan_app/meal_plan/{{plan.id}}/'><button>{{plan.plan_title}}</button></a>
-    {% endfor %}
+  <h2>Shopping Lists</h2>
+  {% for meal_plan in meal_plans %}
+  <a href="/shopping_list_app/shopping_list/{{meal_plan.id}}/"
+    ><button>{{meal_plan}}</button></a
+  >
+  {% endfor %}
 </div>
 {% endblock content %}

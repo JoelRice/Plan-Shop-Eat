@@ -26,5 +26,10 @@
 
 <div>
   <h2>{{user_profile.username}}'s Shopping lists:</h2>
+  {% for plan in users_meal_plans %}
+  <a href="/shopping_list_app/shopping_list/{{plan.id}}/"
+    ><button>{{plan}}</button></a
+  >
+  {% endfor %}
 </div>
 {% endblock %}

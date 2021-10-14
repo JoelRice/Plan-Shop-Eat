@@ -4,15 +4,6 @@ from custom_user_app.models import CustomUser
 # Create your models here.
 
 
-class Ingredient(models.Model):
-    name = models.CharField(max_length=50)
-    unit = models.CharField(max_length=25)
-    amount = models.FloatField()
-    is_spice = models.BooleanField()
-
-    def __str__(self):
-        return f"{self.amount} {self.unit} - {self.name}"
-
 
 class Tool(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -28,7 +19,7 @@ class Tool(models.Model):
 
 class Recipe(models.Model):
     title = models.CharField(max_length=50)
-    instruction = models.TextField()
+    instructions = models.TextField()
     cook_time = models.CharField(max_length=25)
     created_at = models.DateTimeField(default=timezone.now)
     created_by = models.ForeignKey(
@@ -41,10 +32,8 @@ class Recipe(models.Model):
         related_name='recipe_favorited_by',
         blank=True
         )
-    ingredients = models.ManyToManyField(
-        Ingredient,
-        related_name='recipe_ingredient'
-        )
+    ingredients = models.TextField(blank=True, null=True)
+    
     tools = models.ManyToManyField(
         Tool,
         related_name='recipe_tool'
