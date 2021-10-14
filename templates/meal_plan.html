@@ -1,5 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 <h1>{{ meal.plan_title }} Meal Plan</h1>
+
+<div>
+  <a href="/meal_plan_app/edit_meal_plan/{{meal.id}}/"
+    ><button>Edit Meal Plan</button></a
+  >
+</div>
+
+<br />
 <p>Created at : {{meal.created_at }}</p>
 <p>Created by: {{meal.created_by}}</p>
 

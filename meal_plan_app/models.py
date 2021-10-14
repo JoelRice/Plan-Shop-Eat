@@ -44,7 +44,7 @@ class MealPlan(models.Model):
         # ingredient specific code
         string_of_ingredients = ",".join([recipe.ingredients for recipe in list_of_recipes])
         ingredients = [ x.strip() for x in string_of_ingredients.split(',') ] # bruh, why though
-        ingredients.sort(key=lambda ing: ing.split()[-1]) 
+        ingredients.sort(key=lambda ing: ing.lower().split()[-1]) 
         ing_dict = dict()
         for ing in ingredients:
             if ing not in ing_dict:
