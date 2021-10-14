@@ -1,10 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
 from custom_user_app.models import CustomUser
-from meal_plan_app.models import MealPlan
 
-# recipe_custom_user is the related name for created_by
 @login_required
 def user_profile_view(request, user_id):
     template_name = "user_profile.html"

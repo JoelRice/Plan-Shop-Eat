@@ -1,6 +1,11 @@
+{% extends 'base.html' %} {% block content %}
 <h1>{{recipe.title}}</h1>
-{% if request.user in recipe.favorited_by.all %}
 
+<div>
+  <a href="/recipe_app/edit_recipe/{{recipe.id}}/"><button>Edit Recipe</button></a>
+</div>
+<br />
+{% if request.user in recipe.favorited_by.all %}
 <a href="/recipe_app/removeFavorite/{{recipe.id}}/"><button>Remove from Favorite 👎</button></a>
 {% else %}
 <a href="/recipe_app/favorite/{{recipe.id}}/"><button>Add to Favorite 👍</button></a>
@@ -8,7 +13,7 @@
 {% endif %}
 <p>Created by: {{recipe.created_by}}</p>
 <h2>Description</h2>
-<p>{{recipe.recipe_description|truncatechars:'100'}}</p>
+<p>{{recipe.recipe_description}}</p>
 <p>Cook time: {{recipe.cook_time}}</p>
 {% if recipe.recipe_image %}
 <img
@@ -47,3 +52,4 @@
 
 <p>This recipe does not have any reviews yet.</p>
 {% endif %}
+{% endblock %}
