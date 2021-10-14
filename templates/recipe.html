@@ -17,17 +17,20 @@
   alt="{{recipe.title}}"
 />
 {% endif %}
-
+<div>
 <h2>Ingredients</h2>
-{% for ingredient in recipe.ingredients.all %}
-<p>{{ingredient}}</p>
+{% for ingredient in ingredients %}
+<ul>
+<li>{{ingredient}}</li>
+</ul>
 {% endfor %}
+</div>
 <h2>Tools</h2>
 {% for tool in recipe.tools.all %}
 <p>{{tool}}</p>
 {% endfor %}
 <h2>Instructions</h2>
-<pre>{{recipe.instruction}}</pre>
+<pre>{{recipe.instructions}}</pre>
 <p>Created at: {{recipe.created_at}}</p>
 <hr />
 <h2>Reviews</h2>

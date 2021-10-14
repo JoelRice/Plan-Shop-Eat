@@ -2,11 +2,11 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import HttpResponseRedirect, redirect, render, reverse
 from django.contrib.auth.decorators import login_required
 from django.views import View
-from recipe_app.forms import IngredientForm, RecipeForm, ReviewForm, ToolForm
+from recipe_app.forms import RecipeForm, ReviewForm, ToolForm
 
 
 
-from recipe_app.models import Ingredient, Recipe, Review, Tool
+from recipe_app.models import Recipe, Review, Tool
 
 # Create your views here.
 def index_view(request):
@@ -47,13 +47,15 @@ def remove_favorite_view(request, id):
 def recipe_view(request, id):
     recipe = Recipe.objects.get(id=id)
     reviews = recipe.review_recipe.all()
+    ingredients = recipe.ingredients.split(',')
 
     return render(
         request,
         'recipe.html',
         {
             'recipe': recipe,
-            'reviews': reviews
+            'reviews': reviews,
+            'ingredients': ingredients  
             }
         )
 
@@ -84,40 +86,7 @@ class CreateToolView(View):
                 )
             tool = Tool.objects.create(name=data.get('name'))
             return HttpResponseRedirect(
-                request.META.get('HTTP_REFERER'),
-                reverse('recipes')
-                )
-        return render(
-            request,
-            self.template_name,
-            {'form': self.form}
-        )
-
-
-class CreateIngredientView(View):
-    template_name = 'generic_form.html'
-    form = IngredientForm()
-
-    def get(self, request):
-        return render(
-            request,
-            self.template_name,
-            {'form': self.form}
-        )
-
-    def post(self, request):
-        form = IngredientForm(request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            ingredient = Ingredient.objects.create(
-                name=data.get('name'),
-                unit=data.get('unit'),
-                amount=data.get('amount'),
-                is_spice=data.get('is_spice')
-                )
-            return HttpResponseRedirect(
-                request.META.get('HTTP_REFERER'),
-                reverse('recipes')
+                request.GET.get("next", reverse('recipes'))
                 )
         return render(
             request,
@@ -178,14 +147,14 @@ class CreateRecipeView(View):
             recipe = Recipe.objects.create(
                 created_by = user,
                 title = data.get('title'),
-                instruction = data.get('instruction'),
+                instructions = data.get('instructions'),
                 cook_time = data.get('cook_time'),
-                # ingredients = data.get('ingredients'),
+                ingredients = data.get('ingredients'),
                 # tools = data.get('tools'),
                 recipe_image = data.get('recipe_image'),
                 recipe_description = data.get('recipe_description'),
             )
-            recipe.ingredients.set(data.get('ingredients'))
+            # recipe.ingredients.set(data.get('ingredients'))
             recipe.tools.set(data.get('tools'))
             return HttpResponseRedirect(
                 reverse('recipe', args=(recipe.id,))
