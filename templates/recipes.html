@@ -1,12 +1,18 @@
+{% extends 'base.html' %} {% block content %}
 <h1>Recipes</h1>
+<a href="/recipe_app/createRecipe/"><button>Add Recipe</button></a>
 
 {% for recipe in recipes %}
 <h2><a href="/recipe_app/recipe/{{recipe.id}}/">{{recipe.title}}</a></h2>
 {% if request.user in recipe.favorited_by.all %}
 
-<a href="/recipe_app/removeFavorite/{{recipe.id}}/">Remove from Favorite</a>
+<a href="/recipe_app/removeFavorite/{{recipe.id}}/"
+  ><button>Remove from Favorite 👎</button></a
+>
 {% else %}
-<a href="/recipe_app/favorite/{{recipe.id}}/">Add to Favorite</a>
+<a href="/recipe_app/favorite/{{recipe.id}}/"
+  ><button>Add to Favorite 👍</button></a
+>
 
 {% endif %}
 <p>{{recipe.recipe_description|truncatechars:100}}</p>
@@ -18,4 +24,5 @@
 />
 {% endif %}
 <p>{{recipe.created_by}}</p>
-{% endfor %}
+<hr />
+{% endfor %} {% endblock %}

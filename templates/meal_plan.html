@@ -1,46 +1,68 @@
-<h1>Menu Plan</h1>
-<h2>Plan Title: {{ meal.plan_title }}</h2>
+{% extends 'base.html' %} {% block content %}
+<h1>{{ meal.plan_title }} Meal Plan</h1>
+
+<div>
+  <a href="/meal_plan_app/edit_meal_plan/{{meal.id}}/"
+    ><button>Edit Meal Plan</button></a
+  >
+</div>
+
+<br />
 <p>Created at : {{meal.created_at }}</p>
 <p>Created by: {{meal.created_by}}</p>
-<h3>Monday:</h3>
-<ul>
-{%for recipe in meal.monday.all%}
-<p>{{recipe}}</p>
-{%endfor%}
-</ul>
-<h3>Tuesday</h3>
-<ul>
-{%for recipe in meal.tuesday.all%}
-<p>{{recipe}}</p>
-{%endfor%}
-</ul>
-<h3>Wednesday</h3>
-<ul>
-{%for recipe in meal.wednesday.all%}
-<p>{{recipe}}</p>
-{%endfor%}
-</ul>
-<h3>Thursday</h3>
-<ul>
-{%for recipe in meal.thursday.all%}
-<p>{{recipe}}</p>
-{%endfor%}
-</ul>
-<h3>Friday</h3>
-<ul>
-{%for recipe in meal.friday.all%}
-<p>{{recipe}}</p>
-{%endfor%}
-</ul>
-<h3>Saturday</h3>
-<ul>
-{%for recipe in meal.saturday.all%}
-<p>{{recipe}}</p>
-{%endfor%}
-</ul>
-<h3>Sunday</h3>
-<ul>
-{%for recipe in meal.sunday.all%}
-<p>{{recipe}}</p>
-{%endfor%}
-</ul>
+
+<div>
+  <h3>Monday:</h3>
+  {%for recipe in meal.monday.all%}
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
+  {%endfor%}
+</div>
+
+<div>
+  <h3>Tuesday:</h3>
+  {%for recipe in meal.tuesday.all%}
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
+  {%endfor%}
+</div>
+
+<div>
+  <h3>Wednesday:</h3>
+  {%for recipe in meal.wednesday.all%}
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
+  {%endfor%}
+</div>
+
+<div>
+  <h3>Thursday:</h3>
+  {%for recipe in meal.thursday.all%}
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
+  {%endfor%}
+</div>
+
+<div>
+  <h3>Friday:</h3>
+  {%for recipe in meal.friday.all%}
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
+  {%endfor%}
+</div>
+
+<div>
+  <h3>Saturday:</h3>
+  {%for recipe in meal.saturday.all%}
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
+  {%endfor%}
+</div>
+
+<div>
+  <h3>Sunday:</h3>
+  {%for recipe in meal.sunday.all%}
+  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
+  {%endfor%}
+</div>
+<br />
+<div>
+  <a href="/shopping_list_app/shopping_list/{{meal.id}}/"
+    ><button>Shopping List</button></a
+  >
+</div>
+{% endblock %}

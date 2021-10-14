@@ -1,8 +1,35 @@
-<h1>Welcome, {{user_profile.username}}!</h1>
+{% extends 'base.html' %} {% block content %}
+<h1>User Profile</h1>
 <div>
-  <h2>{{user_profile.username}}'s Favorite Recpies</h2>
+  <h2>Favorite Recpies:</h2>
   {% for favorite in user_favortied_recipes %}
-  <h4>{{favorite}}</h4>
+  <a href="/recipe_app/recipe/{{favorite.id}}/"
+    ><button>{{favorite}}</button></a
+  >
   {% endfor %}
 </div>
-<!-- These will be links to recipes next, they are just the rendered names for now -->
+<div>
+  <h2>Recpies:</h2>
+  {% for recipes in users_recipes %}
+  <a href="/recipe_app/recipe/{{recipes.id}}/"
+    ><button>{{recipes.title}}</button></a
+  >
+  {% endfor%}
+</div>
+
+<div>
+  <h2>Meal Plans:</h2>
+  {% for plan in users_meal_plans %}
+  <a href="/meal_plan_app/meal_plan/{{plan.id}}/"><button>{{plan}}</button></a>
+  {% endfor %}
+</div>
+
+<div>
+  <h2>Shopping lists:</h2>
+  {% for plan in users_meal_plans %}
+  <a href="/shopping_list_app/shopping_list/{{plan.id}}/"
+    ><button>{{plan}}</button></a
+  >
+  {% endfor %}
+</div>
+{% endblock %}
