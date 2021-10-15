@@ -1,22 +1,35 @@
-{% extends 'base.html' %}
-{% block content %}
-<div>
-    <h2>{{user.displayname}}'s Shopping List</h2>
-    <div>
-        <h3>Tools</h3>
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h1 class="title text-secondary text-center">
+        {{displayname}}'s Shopping List
+      </h1>
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">Tools</h2>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
         {% for tool in tools %}
-            <button>
-                {{tool.name}}
-            </button>
+        <li class="text-secondary list-group-item">{{tool}}</li>
         {% endfor %}
-    </div>    
-    <div>
-        <h3>Ingredients</h3>
+      </ul>
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">Ingredients</h2>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
         {% for ingredient in ingredients %}
-            <button>
-                {{ingredient.name}}
-            </button>
+        <li class="text-secondary list-group-item">{{ingredient}}</li>
         {% endfor %}
-    </div>    
+      </ul>
+    </div>
+  </div>
+  {% endblock content%}
 </div>
-{% endblock content%}

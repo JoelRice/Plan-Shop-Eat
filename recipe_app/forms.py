@@ -2,16 +2,11 @@ from django import forms
 from django.db import models
 from django.forms import widgets
 
-from recipe_app.models import Ingredient, Recipe, Review, Tool
+from recipe_app.models import Recipe, Review, Tool
 
 class ToolForm(forms.Form):
     name = forms.CharField(max_length=50)
 
-class IngredientForm(forms.Form):
-    name = forms.CharField(max_length=50)
-    unit = forms.CharField(max_length=25)
-    amount = forms.FloatField()
-    is_spice = forms.BooleanField(required=False)
 
 class ReviewForm(forms.ModelForm):
     class Meta:
@@ -21,17 +16,17 @@ class ReviewForm(forms.ModelForm):
 
 class RecipeForm(forms.Form):
     title = forms.CharField(max_length=50)
-    instruction = forms.CharField(widget= forms.Textarea)
-    cook_time = forms.CharField(max_length=25)
-    ingredients = forms.ModelMultipleChoiceField(
-        queryset=Ingredient.objects.all(),
-        required=False,
-        widget=forms.CheckboxSelectMultiple
-        )
     tools = forms.ModelMultipleChoiceField(
         queryset=Tool.objects.all(),
         required=False,
-        widget=forms.CheckboxSelectMultiple
+        widget=forms.CheckboxSelectMultiple,
+        help_text = "<a style='text-decoration: none; display: inline-block; padding: 2px 8px; color: #6c757d; border-style: solid; border-width: 2px; border-radius: 5px; border-color: #6c757d;' href='/recipe_app/createTool/?next=/recipe_app/createRecipe/'>Add new tool</a>"
     )
+    instructions = forms.CharField(widget= forms.Textarea)
+    cook_time = forms.CharField(max_length=25)
+    ingredients = forms.CharField(
+        widget= forms.Textarea, 
+        help_text='Add ingredients seprated by commas e.g. "1 cup milk, 1 egg, 1 packet of Koolaid"'
+        )
     recipe_image = forms.URLField(required=False)
     recipe_description = forms.CharField(widget=forms.Textarea)

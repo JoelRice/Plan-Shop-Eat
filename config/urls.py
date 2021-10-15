@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import handler404, handler500
+from error_handling import views as error_handling
 from recipe_app.views import index_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,3 +29,7 @@ urlpatterns = [
     path('meal_plan_app/', include('meal_plan_app.urls')),
     path('shopping_list_app/', include('shopping_list_app.urls')),
 ]
+
+
+handler404 = 'error_handling.views.error_404'
+handler500 = 'error_handling.views.error_500'

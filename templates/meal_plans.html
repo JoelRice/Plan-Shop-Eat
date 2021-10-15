@@ -1,9 +1,26 @@
 {% extends 'base.html' %} {% block content %}
-
-<h1>Meal Plans</h1>
-<div>
-  {%for plan in plans %}
-  <a href="/meal_plan_app/meal_plan/{{plan.id}}/"><button>{{plan}}</button></a>
-  {%endfor%}
+<div class="container">
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h1 class="title text-secondary text-center">Meal Plans</h1>
+    </div>
+    <div class="card-body text-secondary">
+      <br />
+      <div>
+        {%for plan in plans %}
+        <a
+          class="btn btn-outline-secondary"
+          href="/meal_plan_app/meal_plan/{{plan.id}}/"
+          >{{plan}}</a
+        >
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center">
+    <a class="btn btn-success" href="/meal_plan_app/create_meal_plan/"
+      >Create New Meal Plan</a
+    >
+  </div>
 </div>
 {% endblock %}
