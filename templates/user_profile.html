@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <h1>User Profile</h1>
 <div>
-  <h2>Favorite Recpies:</h2>
+  <h2>Favorite Recipes:</h2>
   {% for favorite in user_favortied_recipes %}
   <a href="/recipe_app/recipe/{{favorite.id}}/"
     ><button>{{favorite}}</button></a
@@ -9,7 +9,7 @@
   {% endfor %}
 </div>
 <div>
-  <h2>Recpies:</h2>
+  <h2>Recipes:</h2>
   {% for recipes in users_recipes %}
   <a href="/recipe_app/recipe/{{recipes.id}}/"
     ><button>{{recipes.title}}</button></a
