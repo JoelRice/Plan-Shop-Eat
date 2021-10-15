@@ -1,10 +1,18 @@
 {% extends 'base.html' %} {% block content %}
-<div>
-  <h2>Shopping Lists</h2>
-  {% for meal_plan in meal_plans %}
-  <a href="/shopping_list_app/shopping_list/{{meal_plan.id}}/"
-    ><button>{{meal_plan}}</button></a
-  >
-  {% endfor %}
+<div class="container">
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h1 class="title text-secondary text-center">Shopping Lists</h1>
+    </div>
+    <div class="card-body">
+      {% for meal_plan in meal_plans %}
+      <a
+        class="btn btn-outline-secondary"
+        href="/shopping_list_app/shopping_list/{{meal_plan.id}}/"
+        >{{meal_plan}}</a
+      >
+      {% endfor %}
+    </div>
+  </div>
 </div>
 {% endblock content %}
