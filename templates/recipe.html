@@ -1,55 +1,103 @@
 {% extends 'base.html' %} {% block content %}
-<h1>{{recipe.title}}</h1>
+<div class="container">
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h1 class="title text-secondary text-center">{{recipe.title}}</h1>
+    </div>
+  </div>
+  <div class="card-body text-secondary">
+    <div style="display: flex; align-items: center; justify-content: center">
+      <a
+        style="margin: 2.5px"
+        class="btn btn-outline-secondary"
+        href="/recipe_app/edit_recipe/{{recipe.id}}/"
+      >
+        <i class="bi bi-pencil-square"></i>
+      </a>
+      {% if request.user in recipe.favorited_by.all %}
+      <a
+        style="margin: 2.5px"
+        class="btn btn-outline-secondary"
+        href="/recipe_app/removeFavorite/{{recipe.id}}/"
+        ><i class="bi bi-bookmark-fill"></i
+      ></a>
+      {% else %}
+      <a
+        style="margin: 2.5px"
+        class="btn btn-outline-secondary"
+        href="/recipe_app/favorite/{{recipe.id}}/"
+        ><i class="bi bi-bookmark"></i
+      ></a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="title text-secondary text-center">Description</h2>
+    </div>
+    <div class="card-body text-secondary">
+      <p>{{recipe.recipe_description}}</p>
+      <p>Cook time: {{recipe.cook_time}}</p>
+      {% if recipe.recipe_image %}
+      <img
+        style="width: 100px"
+        src="{{recipe.recipe_image}}"
+        alt="{{recipe.title}}"
+      />
+      {% endif %}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="title text-secondary text-center">Ingredients</h2>
+    </div>
+    <div class="card-body text-secondary">
+      {% for ingredient in ingredients %}
+      <ul>
+        <li>{{ingredient}}</li>
+      </ul>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="title text-secondary text-center">Tools</h2>
+    </div>
+    <div class="card-body text-secondary">
+      {% for tool in recipe.tools.all %}
+      <p>{{tool}}</p>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="title text-secondary text-center">Instructions</h2>
+    </div>
+    <div class="card-body text-secondary">
+      <pre>{{recipe.instructions}}</pre>
+      <p>Created at: {{recipe.created_at}}</p>
+    </div>
+  </div>
 
-<div>
-  <a href="/recipe_app/edit_recipe/{{recipe.id}}/"><button>Edit Recipe</button></a>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="title text-secondary text-center">Reviews</h2>
+    </div>
+    <div class="card-body text-secondary">
+      {% if reviews %} {% for review in reviews %}
+
+      <h3>Created by {{review.created_by}}</h3>
+      <p>{{review.rating}}/5</p>
+      <p>{{review.body}}</p>
+      <p>{{review.created_at}}</p>
+      <a href="/recipe_app/createReview/{{recipe.id}}/"
+        ><button class="btn btn-secondary">Add Review</button></a
+      >
+      <p>{% endfor %} {% else %}</p>
+      <p>This recipe does not have any reviews yet.</p>
+      {% endif %}
+    </div>
+  </div>
+  <p class="card-body text-secondary">Created by: {{recipe.created_by}}</p>
 </div>
-<br />
-{% if request.user in recipe.favorited_by.all %}
-<a href="/recipe_app/removeFavorite/{{recipe.id}}/"><button>Remove from Favorite 👎</button></a>
-{% else %}
-<a href="/recipe_app/favorite/{{recipe.id}}/"><button>Add to Favorite 👍</button></a>
-
-{% endif %}
-<p>Created by: {{recipe.created_by}}</p>
-<h2>Description</h2>
-<p>{{recipe.recipe_description}}</p>
-<p>Cook time: {{recipe.cook_time}}</p>
-{% if recipe.recipe_image %}
-<img
-  style="width: 100px"
-  src="{{recipe.recipe_image}}"
-  alt="{{recipe.title}}"
-/>
-{% endif %}
-<div>
-<h2>Ingredients</h2>
-{% for ingredient in ingredients %}
-<ul>
-<li>{{ingredient}}</li>
-</ul>
-{% endfor %}
-</div>
-<h2>Tools</h2>
-{% for tool in recipe.tools.all %}
-<p>{{tool}}</p>
-{% endfor %}
-<h2>Instructions</h2>
-<pre>{{recipe.instructions}}</pre>
-<p>Created at: {{recipe.created_at}}</p>
-<hr />
-<h2>Reviews</h2>
-<a href="/recipe_app/createReview/{{recipe.id}}/"">Add Review</a>
-{% if reviews %} {% for review in reviews %}
-
-<h3>{{review.created_by}}</h3>
-<p>{{review.rating}}/5</p>
-<p>{{review.body}}</p>
-<p>{{review.created_at}}</p>
-<hr />
-
-<p>{% endfor %} {% else %}</p>
-
-<p>This recipe does not have any reviews yet.</p>
-{% endif %}
 {% endblock %}
