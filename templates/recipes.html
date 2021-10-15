@@ -1,9 +1,15 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container">
-  <h1 class="title text-secondary text-center">Recipes</h1>
-  <div style="display: flex; align-items: center; justify-content: center">
-    <a class="btn btn-secondary" href="/recipe_app/createRecipe/">Add Recipe</a>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 15px">
+    <div class="card-header">
+      <h1 class="title text-secondary text-center">Recipes</h1>
+    </div>
   </div>
+
+  <div style="display: flex; align-items: center; justify-content: center">
+    <a class="btn btn-primary" href="/recipe_app/createRecipe/">Add Recipe</a>
+  </div>
+
   <div class="row row-cols-5" style="justify-content: center">
     {% for recipe in recipes %}
     <div class="col m-3" style="width: 400px">

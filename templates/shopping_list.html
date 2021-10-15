@@ -1,8 +1,12 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container">
-  <h1 class="title text-secondary text-center">
-    {{displayname}}'s Shopping List
-  </h1>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h1 class="title text-secondary text-center">
+        {{displayname}}'s Shopping List
+      </h1>
+    </div>
+  </div>
   <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
     <div class="card-header">
       <h2 class="text-secondary text-center">Tools</h2>
