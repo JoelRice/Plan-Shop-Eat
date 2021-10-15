@@ -5,6 +5,10 @@
   type="text/css"
   href="{% static 'bootstrap/css/bootstrap.css' %}"
 />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"
+/>
 <html lang="en">
   <head>
     <title>{% block title %}Plan. Shop. Eat.{% endblock %}</title>
@@ -23,11 +27,17 @@
     <nav class="navbar">
       <div class="container-fluid">
         <nav class="nav">
-          <a class="nav-link active" aria-current="page" href="/recipe_app/recipes">Recipes</a>
+          <a
+            class="nav-link active"
+            aria-current="page"
+            href="/recipe_app/recipes"
+            >Recipes</a
+          >
           <a class="nav-link" href="/meal_plan_app/meal_plans">Meal Plans</a>
           <a class="nav-link" href="/shopping_list_app/">Shopping Lists</a>
-          <a class="nav-link" href="/custom_user_app/profile/{{user.id}}/">User Profile</a>
-          
+          <a class="nav-link" href="/custom_user_app/profile/{{user.id}}/"
+            >User Profile</a
+          >
         </nav>
       </div>
     </nav>

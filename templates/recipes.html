@@ -1,28 +1,50 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Recipes</h1>
-<a href="/recipe_app/createRecipe/"><button>Add Recipe</button></a>
+<div class="container">
+  <h1 class="title text-secondary text-center">Recipes</h1>
+  <div style="display: flex; align-items: center; justify-content: center">
+    <a class="btn btn-secondary" href="/recipe_app/createRecipe/">Add Recipe</a>
+  </div>
+  <div class="row row-cols-5">
+    {% for recipe in recipes %}
+    <div class="col m-3">
+      <div class="card border-secondary" style="width: 18rem">
+        <div class="card-header">
+          <a class="text-secondary" href="/recipe_app/recipe/{{recipe.id}}/"
+            ><h2 class="card-title">{{recipe.title}}</h2></a
+          >
+          {% if request.user in recipe.favorited_by.all %}
 
-{% for recipe in recipes %}
-<h2><a href="/recipe_app/recipe/{{recipe.id}}/">{{recipe.title}}</a></h2>
-{% if request.user in recipe.favorited_by.all %}
+          <a
+            class="btn btn-outline-secondary"
+            href="/recipe_app/removeFavorite/{{recipe.id}}/"
+            ><i class="bi bi-bookmark-fill"></i
+          ></a>
+          {% else %}
+          <a
+            class="btn btn-outline-secondary"
+            href="/recipe_app/favorite/{{recipe.id}}/"
+            ><i class="bi bi-bookmark"></i
+          ></a>
 
-<a href="/recipe_app/removeFavorite/{{recipe.id}}/"
-  ><button>Remove from Favorite 👎</button></a
->
-{% else %}
-<a href="/recipe_app/favorite/{{recipe.id}}/"
-  ><button>Add to Favorite 👍</button></a
->
-
-{% endif %}
-<p>{{recipe.recipe_description|truncatechars:100}}</p>
-{% if recipe.recipe_image %}
-<img
-  style="width: 100px"
-  src="{{recipe.recipe_image}}"
-  alt="{{recipe.title}}"
-/>
-{% endif %}
-<p>{{recipe.created_by}}</p>
-<hr />
-{% endfor %} {% endblock %}
+          {% endif %}
+        </div>
+        <div class="card-body text-secondary">
+          <p class="card-text">
+            {{recipe.recipe_description|truncatechars:100}}
+          </p>
+          {% if recipe.recipe_image %}
+          <img
+            class="rounded"
+            style="width: 100%"
+            src="{{recipe.recipe_image}}"
+            alt="{{recipe.title}}"
+          />
+          {% endif %}
+          <p class="card-text">{{recipe.created_by}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
