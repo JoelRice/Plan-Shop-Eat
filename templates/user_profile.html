@@ -1,35 +1,61 @@
 {% extends 'base.html' %} {% block content %}
-<h1>User Profile</h1>
-<div>
-  <h2>Favorite Recipes:</h2>
-  {% for favorite in user_favortied_recipes %}
-  <a href="/recipe_app/recipe/{{favorite.id}}/"
-    ><button>{{favorite}}</button></a
-  >
-  {% endfor %}
+<div class="container">
+  <h1 class="title text-secondary text-center">User Profile</h1>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">Favorite Recipes</h2>
+    </div>
+    <div class="card-body">
+      {% for favorite in user_favortied_recipes %}
+      <a
+        class="btn btn-outline-secondary"
+        href="/recipe_app/recipe/{{favorite.id}}/"
+        >{{favorite}}</a
+      >
+      {% endfor %}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">User Recipes</h2>
+    </div>
+    <div class="card-body">
+      {% for recipe in users_recipes %}
+      <a
+        class="btn btn-outline-secondary"
+        href="/recipe_app/recipe/{{recipe.id}}/"
+        >{{recipe.title}}</a
+      >
+      {% endfor %}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">Meal Plans</h2>
+    </div>
+    <div class="card-body">
+      {% for plan in users_meal_plans %}
+      <a
+        class="btn btn-outline-secondary"
+        href="/meal_plan_app/meal_plan/{{plan.id}}/"
+        >{{plan}}</a
+      >
+      {% endfor %}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">Shopping Lists</h2>
+    </div>
+    <div class="card-body">
+      {% for plan in users_meal_plans %}
+      <a
+        class="btn btn-outline-secondary"
+        href="/shopping_list_app/shopping_list/{{plan.id}}/"
+        >{{plan}}</a
+      >
+      {% endfor %}
+    </div>
+  </div>
+  {% endblock %}
 </div>
-<div>
-  <h2>Recipes:</h2>
-  {% for recipes in users_recipes %}
-  <a href="/recipe_app/recipe/{{recipes.id}}/"
-    ><button>{{recipes.title}}</button></a
-  >
-  {% endfor%}
-</div>
-
-<div>
-  <h2>Meal Plans:</h2>
-  {% for plan in users_meal_plans %}
-  <a href="/meal_plan_app/meal_plan/{{plan.id}}/"><button>{{plan}}</button></a>
-  {% endfor %}
-</div>
-
-<div>
-  <h2>Shopping lists:</h2>
-  {% for plan in users_meal_plans %}
-  <a href="/shopping_list_app/shopping_list/{{plan.id}}/"
-    ><button>{{plan}}</button></a
-  >
-  {% endfor %}
-</div>
-{% endblock %}
