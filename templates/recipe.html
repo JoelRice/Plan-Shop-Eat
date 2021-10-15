@@ -90,8 +90,10 @@
       <p>{{review.rating}}/5</p>
       <p>{{review.body}}</p>
       <p>{{review.created_at}}</p>
-      <a href="/recipe_app/createReview/{{recipe.id}}/"
-        ><button class="btn btn-secondary">Add Review</button></a
+      <a
+        class="btn btn-secondary"
+        href="/recipe_app/createReview/{{recipe.id}}/"
+        >Add Review</a
       >
       <p>{% endfor %} {% else %}</p>
       <p>This recipe does not have any reviews yet.</p>
