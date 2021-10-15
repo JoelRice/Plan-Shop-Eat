@@ -1,9 +1,29 @@
-<h1>Welcome to Plan. Shop. Eat.</h1>
-<p>
-  This is filler text to let the user know what the app is about, app
-  instructions, and to create and set up a profile page
-</p>
-<p></p>
-<br />
-<a href="authentication/signup/"><button>Sign Up</button></a>
-<a href="authentication/login/"><button>Login</button></a>
+{% load static %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'bootstrap/css/bootstrap.css' %}"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"
+/>
+<div class="container">
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h1 class="title text-secondary text-center">
+        Welcome to Plan. Shop. Eat.
+      </h1>
+    </div>
+  </div>
+  <div class="card-body text-secondary">
+    <p>
+      This is filler text to let the user know what the app is about, app
+      instructions, and to create and set up a profile page
+    </p>
+  </div>
+  <p></p>
+  <br />
+  <a class="btn btn-primary" href="authentication/signup/">Sign up</a>
+  <a class="btn btn-primary" href="authentication/login/">Login</a>
+</div>
