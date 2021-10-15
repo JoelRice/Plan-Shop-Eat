@@ -3,11 +3,6 @@
   <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
     <div class="card-header">
       <h1 class="title text-secondary text-center">Meal Plans</h1>
-      <div style="display: flex; align-items: center; justify-content: center">
-        <a class="btn btn-primary" href="/meal_plan_app/create_meal_plan/"
-          >Create New Meal Plan</a
-        >
-      </div>
     </div>
     <div class="card-body text-secondary">
       <br />
@@ -21,6 +16,11 @@
         {%endfor%}
       </div>
     </div>
+  </div>
+  <div style="display: flex; align-items: center; justify-content: center">
+    <a class="btn btn-primary" href="/meal_plan_app/create_meal_plan/"
+      >Create New Meal Plan</a
+    >
   </div>
 </div>
 {% endblock %}
