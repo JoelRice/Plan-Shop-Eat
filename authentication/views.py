@@ -16,7 +16,7 @@ def login_view(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse("recipes"))
     form = LoginForm()
-    return render(request, "generic_form.html", {"form": form})
+    return render(request, "generic_form.html", {"form": form, 'form_title': 'Log In'})
 
 # change Http redirect!!!
 def signup_view(request):
@@ -31,7 +31,7 @@ def signup_view(request):
                 )
         return HttpResponseRedirect(reverse('recipes'))
     form = SignUpForm()
-    return render(request, 'generic_form.html', {"form": form})
+    return render(request, 'generic_form.html', {"form": form, 'form_title': 'Sign Up'})
 
 
 def logout_view(request):

@@ -22,7 +22,7 @@ class CreateMealPlanView(View):
         return render(
             request,
             self.template_name,
-            {'form': self.form}
+            {'form': self.form, 'form_title': 'Create Meal plan'}
         )
 
     def post(self, request):
@@ -68,7 +68,7 @@ class EditMealPlanView(View):
         return render(
             request,
             self.template_name,
-            {'form': form}
+            {'form': form, 'form_title': 'Edit Meal Plan'}
         )
 
     def post(self, request, id):
