@@ -87,7 +87,7 @@ def edit_recipe_view(request, id):
         "recipe_description": recipe.recipe_description,  
     }
     form = RecipeForm(data)
-    return render(request, 'generic_form.html', {"form": form})
+    return render(request, 'generic_form.html', {"form": form, 'form_title': 'Edit Recipe'})
 
 
 class CreateToolView(View):
@@ -98,7 +98,7 @@ class CreateToolView(View):
         return render(
             request,
             self.template_name,
-            {'form': self.form}
+            {'form': self.form,'form_title': "Create Tool"}
         )
 
     def post(self, request):
@@ -111,7 +111,7 @@ class CreateToolView(View):
                     self.template_name,
                     {
                         'form': self.form,
-                        'error': f"{data.get('name')} already exists in the database."
+                        'form_title': "Create Tool"
                         }
                 )
             tool = Tool.objects.create(name=data.get('name'))
@@ -121,7 +121,7 @@ class CreateToolView(View):
         return render(
             request,
             self.template_name,
-            {'form': self.form}
+            {'form': self.form, 'form_title': 'Create Tool'}
         )
 
 
@@ -133,7 +133,7 @@ class CreateReviewView(View):
         return render(
             request,
             self.template_name,
-            {'form': self.form}
+            {'form': self.form, 'form_title': 'Create Review'}
         )
 
     def post(self, request, id):
@@ -154,7 +154,7 @@ class CreateReviewView(View):
         return render(
             request,
             self.template_name,
-            {'form': self.form}
+            {'form': self.form, 'form_title': 'Create Review'}
         )
 
 
@@ -166,7 +166,7 @@ class CreateRecipeView(View):
         return render(
             request,
             self.template_name,
-            {'form': self.form}
+            {'form': self.form, 'form_title': 'Create Recipe'}
         )
 
     def post(self, request):
@@ -192,5 +192,5 @@ class CreateRecipeView(View):
         return render(
             request,
             self.template_name,
-            {'form': self.form}
+            {'form': self.form, 'form_title': 'Create Recipe'}
         )
