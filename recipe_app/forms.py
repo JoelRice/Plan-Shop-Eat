@@ -20,7 +20,7 @@ class RecipeForm(forms.Form):
         queryset=Tool.objects.all(),
         required=False,
         widget=forms.CheckboxSelectMultiple,
-        help_text = "<a href='/recipe_app/createTool/?next=/recipe_app/createRecipe/'>Add new tool</a>"
+        help_text = "<a style='text-decoration: none; display: inline-block; padding: 2px 8px; color: #6c757d; border-style: solid; border-width: 2px; border-radius: 5px; border-color: #6c757d;' href='/recipe_app/createTool/?next=/recipe_app/createRecipe/'>Add new tool</a>"
     )
     instructions = forms.CharField(widget= forms.Textarea)
     cook_time = forms.CharField(max_length=25)

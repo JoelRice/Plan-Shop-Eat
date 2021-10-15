@@ -1,68 +1,129 @@
 {% extends 'base.html' %} {% block content %}
-<h1>{{ meal.plan_title }} Meal Plan</h1>
+<div class="container">
+  <div class="card border-secondary" style="width: 100%">
+    <div class="card-header">
+      <h1 class="title text-secondary text-center">{{ meal.plan_title }}</h1>
+    </div>
+  </div>
 
-<div>
-  <a href="/meal_plan_app/edit_meal_plan/{{meal.id}}/"
-    ><button>Edit Meal Plan</button></a
-  >
+  <div class="card-body">
+    <div style="display: flex; align-items: center; justify-content: center">
+      <a
+        class="btn btn-outline-secondary"
+        href="/meal_plan_app/edit_meal_plan/{{meal.id}}/"
+        ><i class="bi bi-pencil-square"></i
+      ></a>
+    </div>
+  </div>
+
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">Monday</h2>
+    </div>
+    <div class="card-body">
+      {%for recipe in meal.monday.all%}
+      <a
+        class="btn btn-outline-secondary"
+        href="/recipe_app/recipe/{{recipe.id}}/"
+        >{{recipe}}</a
+      >
+      {%endfor%}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">Tuesday</h2>
+    </div>
+    <div class="card-body">
+      {%for recipe in meal.tuesday.all%}
+      <a
+        class="btn btn-outline-secondary"
+        href="/recipe_app/recipe/{{recipe.id}}/"
+        >{{recipe}}</a
+      >
+      {%endfor%}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">Wednesday</h2>
+    </div>
+    <div class="card-body">
+      {%for recipe in meal.wednesday.all%}
+      <a
+        class="btn btn-outline-secondary"
+        href="/recipe_app/recipe/{{recipe.id}}/"
+        >{{recipe}}</a
+      >
+      {%endfor%}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">Thursday</h2>
+    </div>
+    <div class="card-body">
+      {%for recipe in meal.thursday.all%}
+      <a
+        class="btn btn-outline-secondary"
+        href="/recipe_app/recipe/{{recipe.id}}/"
+        >{{recipe}}</a
+      >
+      {%endfor%}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">Friday</h2>
+    </div>
+    <div class="card-body">
+      {%for recipe in meal.friday.all%}
+      <a
+        class="btn btn-outline-secondary"
+        href="/recipe_app/recipe/{{recipe.id}}/"
+        >{{recipe}}</a
+      >
+      {%endfor%}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">Saturday</h2>
+    </div>
+    <div class="card-body">
+      {%for recipe in meal.saturday.all%}
+      <a
+        class="btn btn-outline-secondary"
+        href="/recipe_app/recipe/{{recipe.id}}/"
+        >{{recipe}}</a
+      >
+      {%endfor%}
+    </div>
+  </div>
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
+    <div class="card-header">
+      <h2 class="text-secondary text-center">Sunday</h2>
+    </div>
+    <div class="card-body">
+      {%for recipe in meal.sunday.all%}
+      <a
+        class="btn btn-outline-secondary"
+        href="/recipe_app/recipe/{{recipe.id}}/"
+        >{{recipe}}</a
+      >
+      {%endfor%}
+    </div>
+  </div>
+
+  <p class="text-secondary">Created by: {{meal.created_by}}</p>
+  <p class="text-secondary">Created at: {{meal.created_at}}</p>
+  <div style="display: flex; align-items: center; justify-content: center">
+    <a
+      class="btn btn-outline-secondary"
+      href="/shopping_list_app/shopping_list/{{meal.id}}/"
+      >View Shopping List</a
+    >
+  </div>
 </div>
 
-<br />
-<p>Created at : {{meal.created_at }}</p>
-<p>Created by: {{meal.created_by}}</p>
-
-<div>
-  <h3>Monday:</h3>
-  {%for recipe in meal.monday.all%}
-  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
-  {%endfor%}
-</div>
-
-<div>
-  <h3>Tuesday:</h3>
-  {%for recipe in meal.tuesday.all%}
-  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
-  {%endfor%}
-</div>
-
-<div>
-  <h3>Wednesday:</h3>
-  {%for recipe in meal.wednesday.all%}
-  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
-  {%endfor%}
-</div>
-
-<div>
-  <h3>Thursday:</h3>
-  {%for recipe in meal.thursday.all%}
-  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
-  {%endfor%}
-</div>
-
-<div>
-  <h3>Friday:</h3>
-  {%for recipe in meal.friday.all%}
-  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
-  {%endfor%}
-</div>
-
-<div>
-  <h3>Saturday:</h3>
-  {%for recipe in meal.saturday.all%}
-  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
-  {%endfor%}
-</div>
-
-<div>
-  <h3>Sunday:</h3>
-  {%for recipe in meal.sunday.all%}
-  <a href="/recipe_app/recipe/{{recipe.id}}/"><button>{{recipe}}</button></a>
-  {%endfor%}
-</div>
-<br />
-<div>
-  <a href="/shopping_list_app/shopping_list/{{meal.id}}/"
-    ><button>Shopping List</button></a
-  >
-</div>
 {% endblock %}
