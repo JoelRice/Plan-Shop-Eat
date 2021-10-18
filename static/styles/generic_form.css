@@ -1,0 +1,27 @@
+.container {
+    background-color: rgb(126, 123, 123);
+}
+
+#content {
+  padding-top: 10rem;
+}
+
+.btn{
+    background-color: #42c2e9;
+    color:white;
+    margin: 10px;
+}
+
+.col-sm {
+  margin-top: 2rem;
+}
+.container-md {
+  /* margin-top: 15rem; */
+  border-radius: 2px;
+  width: 30rem;
+  background-color: white;
+}
+
+.title {
+  margin-bottom: 3rem;
+}
