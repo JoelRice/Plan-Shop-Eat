@@ -24,6 +24,16 @@ def signup_view(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
+            if CustomUser.objects.filter(username=data['username']).exists():
+                return render(
+                    request,
+                    'generic_form.html',
+                    {
+                        "form": form,
+                        'form_title': 'Sign Up',
+                        'error_message': 'Username already exists...'
+                        }
+                    )
             user = CustomUser.objects.create_user(
                 username=data['username'],
                 displayname=data['displayname'],
