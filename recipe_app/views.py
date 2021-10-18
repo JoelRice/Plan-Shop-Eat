@@ -111,7 +111,8 @@ class CreateToolView(View):
                     self.template_name,
                     {
                         'form': self.form,
-                        'form_title': "Create Tool"
+                        'form_title': "Create Tool",
+                        'error_message': 'That tool was already in the database.'
                         }
                 )
             tool = Tool.objects.create(name=data.get('name'))
