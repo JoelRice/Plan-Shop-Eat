@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import HttpResponseRedirect, reverse, render
 from django.contrib.auth.decorators import login_required
 from custom_user_app.models import CustomUser
 
@@ -18,4 +18,20 @@ def user_profile_view(request, user_id):
         "users_recipes": users_recipes,
         "users_meal_plans": users_meal_plans
         }
+        )
+
+def css_mode_view(request, id):
+    if request.user.id != id:
+        return HttpResponseRedirect(
+            request.META.get('HTTP_REFERER'),
+            reverse('recipes')
+            )
+    if request.user.isDarkMode:
+        request.user.isDarkMode = False
+    else:
+        request.user.isDarkMode = True
+    request.user.save()
+    return HttpResponseRedirect(
+        request.META.get('HTTP_REFERER'),
+        reverse('recipes')
         )

@@ -43,7 +43,7 @@ def remove_favorite_view(request, id):
         reverse('recipes')
         )
 
-
+@login_required
 def recipe_view(request, id):
     recipe = Recipe.objects.get(id=id)
     reviews = recipe.review_recipe.all()

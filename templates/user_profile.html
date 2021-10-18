@@ -47,7 +47,7 @@
       {% endfor %}
     </div>
   </div>
-  <div class="card border-secondary" style="width: 100%">
+  <div class="card border-secondary" style="width: 100%; margin-bottom: 10px">
     <div class="card-header">
       <h2 class="text-secondary text-center">Shopping Lists</h2>
     </div>
@@ -61,5 +61,20 @@
       {% endfor %}
     </div>
   </div>
-  {% endblock %}
+  <div style="display: flex; flex-direction: column; align-items: center">
+    {% if user_profile.isDarkMode %}
+    <a
+      class="btn btn-outline-secondary"
+      href="/custom_user_app/css_mode/{{user_profile.id}}/"
+      >Change to Light Mode</a
+    >
+    {% else %}
+    <a
+      class="btn btn-outline-secondary"
+      href="/custom_user_app/css_mode/{{user_profile.id}}/"
+      >Change to Dark Mode</a
+    >
+    {% endif %}
+  </div>
 </div>
+{% endblock %}

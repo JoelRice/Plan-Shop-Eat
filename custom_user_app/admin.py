@@ -10,13 +10,13 @@ class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = ['username', 'displayname']
     fieldsets = (
-        (None, {'fields': ('username', 'displayname',  'password')}),
+        (None, {'fields': ('username', 'displayname', 'isDarkMode',  'password')}),
         ('Permissions', {'fields': ('is_staff', 'is_active')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('username', 'displayname',  'password1', 'password2', 'is_staff', 'is_active')}
+            'fields': ('username', 'displayname', 'isDarkMode',  'password1', 'password2', 'is_staff', 'is_active')}
         ),
     )
 
