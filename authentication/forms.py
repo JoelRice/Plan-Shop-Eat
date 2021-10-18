@@ -1,5 +1,5 @@
 from django import forms
-
+from django.contrib.auth.password_validation import password_validators_help_text_html
 from custom_user_app.models import CustomUser
 
 class LoginForm(forms.Form):
@@ -11,8 +11,5 @@ class SignUpForm(forms.Form):
     displayname = forms.CharField(max_length=150)
     password = forms.CharField(
         widget=forms.PasswordInput,
-        help_text="""Your password can’t be too similar to your other personal information.
-                     Your password must contain at least 8 characters.
-                     Your password can’t be a commonly used password.
-                     Your password can’t be entirely numeric."""
+        help_text=password_validators_help_text_html()
 ) 
