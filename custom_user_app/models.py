@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
     displayname = models.CharField(max_length=50)
+    isDarkMode = models.BooleanField(default=False)
 
     def __str__(self):
         return self.username
