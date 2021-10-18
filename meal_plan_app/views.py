@@ -2,14 +2,15 @@ from django.shortcuts import render, reverse, HttpResponseRedirect
 from django.views import View
 from meal_plan_app.forms import CreateMealPlanForm
 from meal_plan_app.models import MealPlan
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-
+@login_required
 def meal_plan_view(request, id):
     meal = MealPlan.objects.get(id=id)
     return render(request, 'meal_plan.html', {'meal':meal})
 
-
+@login_required
 def meal_plans_list_view(request):
     plans = MealPlan.objects.all()
     return render(request, 'meal_plans.html', {'plans': plans})
