@@ -1,0 +1,14 @@
+.container {
+    background-color: rgb(126, 123, 123);
+    padding-top: 15rem;
+}
+
+#button{
+    background-color: #42c2e9;
+    color:white;
+    margin: 10px;
+}
+
+.row {
+    color:white;
+}

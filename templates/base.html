@@ -1,10 +1,5 @@
 {% load static%}
 
-<!-- <link
-  rel="stylesheet"
-  type="text/css"
-  href="{% static 'bootstrap/css/bootstrap.css' %}"
-/> -->
 <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"
@@ -25,26 +20,26 @@
       <div class="container-fluid justify-content-space-evenly">
         <div>
           <img
-            src="https://see.fontimg.com/api/renderfont4/eWap/eyJyIjoiZnMiLCJoIjo2OCwidyI6MTIwMCwiZnMiOjU3LCJmZ2MiOiIjNENDRDgwIiwiYmdjIjoiI0ZGRkZGRiIsInQiOjF9/UGxhbi4gID0-ICBTaG9wLiAgID0-ICAgRWF0Lg/typists-pseudonym.png"
+            src=https://see.fontimg.com/api/renderfont4/ZVaAZ/eyJyIjoiZnMiLCJoIjo4MSwidyI6MTI1MCwiZnMiOjY1LCJmZ2MiOiIjNERDRUY4IiwiYmdjIjoiIzM1M0Q0QiIsInQiOjF9/UGxhbi4gPT4gU2hvcC4gPT4gRWF0Lg/deretan-script.png
             alt="Plan.Shop.Eat."
             height="24"
             margin-right="10"
           />
         </div>
         <a class="nav-link" href="/recipe_app/recipes">
-          <button type="button" class="btn btn-success">Recipes</button>
+          <button type="button" class="btn active" aria-pressed="true">Recipes</button>
         </a>
         <a class="nav-link" href="/meal_plan_app/meal_plans">
-          <button type="button" class="btn btn-success">Meal Plans</button>
+          <button type="button" class="btn active" aria-pressed="true">Meal Plans</button>
         </a>
         <a class="nav-link" href="/shopping_list_app/">
-          <button type="button" class="btn btn-success">Shopping Lists</button>
+          <button type="button" class="btn active" aria-pressed="true">Shopping Lists</button>
         </a>
         <a class="nav-link" href="/custom_user_app/profile/{{user.id}}/">
-          <button type="button" class="btn btn-success">User Profile</button>
+          <button type="button" class="btn active" aria-pressed="true">User Profile</button>
         </a>
         <a class="nav-link" href="/authentication/logout/">
-          <button type="button" class="btn btn-success">Logout</button>
+          <button type="button" class="btn active" aria-pressed="true">Logout</button>
         </a>
       </div>
     </nav>

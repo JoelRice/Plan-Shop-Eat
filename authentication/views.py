@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
 from authentication.forms import LoginForm, SignUpForm
+from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import login, authenticate, logout
 from custom_user_app.models import CustomUser
 # Create your views here.
@@ -15,6 +16,16 @@ def login_view(request):
             if user:
                 login(request, user)
                 return HttpResponseRedirect(reverse("recipes"))
+            else:
+                return render(
+                    request,
+                    "generic_form.html",
+                    {
+                        "form": form,
+                        'form_title': 'Log In',
+                        'error_message': 'Username or Password were invalid...'
+                        }
+                    )
     form = LoginForm()
     return render(request, "generic_form.html", {"form": form, 'form_title': 'Log In'})
 
@@ -24,6 +35,32 @@ def signup_view(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             data = form.cleaned_data
+            if CustomUser.objects.filter(username=data['username']).exists():
+                return render(
+                    request,
+                    'generic_form.html',
+                    {
+                        "form": form,
+                        'form_title': 'Sign Up',
+                        'error_message': 'Username already exists...'
+                        }
+                    )
+            isValid = True
+            try:
+                validate_password(data['password'])
+            except:
+                isValid = False
+            if not isValid:
+                return render(
+                    request,
+                    'generic_form.html',
+                    {
+                        "form": form,
+                        'form_title': 'Sign Up',
+                        'error_message': "That password ain't right"
+                        }
+                    )
+                
             user = CustomUser.objects.create_user(
                 username=data['username'],
                 displayname=data['displayname'],
