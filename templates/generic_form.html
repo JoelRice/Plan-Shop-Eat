@@ -1,9 +1,5 @@
-{% extends 'base.html' %} {% block content %}
-{% load static %}
-<link
-  rel="stylesheet"
-  href="{% static 'styles/generic_form.css' %}"
-/>
+{% extends 'base.html' %} {% block content %} {% load static %}
+<link rel="stylesheet" href="{% static 'styles/generic_form.css' %}" />
 <html lang="en">
   <head>
     <title>{% block title %}Plan. Shop. Eat.{% endblock %}</title>
@@ -14,21 +10,22 @@
       }
     </style>
   </head>
-<body class="container">
+
   <div class="container-md">
     <div class="row">
       <div class="col-sm">
         <h1 class="title" style="color: rgb(126, 123, 123)">{{form_title}}</h1>
         <form action="" method="post">
-        {% csrf_token %} {{ form.as_p }}
-        <p class="text-danger">{{error_message}}</p>
-        <div style="display: flex; align-items: center; justify-content: center">
-          <input class="btn" type="submit" value="submit" />
-        </div>
+          {% csrf_token %} {{ form.as_p }}
+          <p class="text-danger">{{error_message}}</p>
+          <div
+            style="display: flex; align-items: center; justify-content: center"
+          >
+            <input class="btn" type="submit" value="submit" />
+          </div>
         </form>
       </div>
     </div>
   </div>
-</body>
 </html>
 {% endblock %}
