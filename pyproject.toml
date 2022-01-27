@@ -8,7 +8,7 @@ authors = ["Joel Rice, Casey Mockbee, Nima Weatherly, Megan Dimond, Pete Zamora"
 python = "^3.9"
 Django = "^3.2.8"
 django-environ = "^0.7.0"
-Pillow = "^8.3.2"
+Pillow = "^9.0.0"
 
 [tool.poetry.dev-dependencies]
 
